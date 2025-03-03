@@ -7,6 +7,8 @@ on:
     branches: [ main ]
   schedule:
     - cron: '0 0 * * 0'
+  # If you want to trigger manually from the Actions tab, uncomment:
+  # workflow_dispatch:
 
 jobs:
   analyze:
@@ -17,8 +19,10 @@ jobs:
       contents: read
       security-events: write
     strategy:
+      fail-fast: false
       matrix:
         language: [ "javascript", "typescript" ]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -28,10 +32,17 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
+      # If your Node/TS project is simple and has a package.json at the root,
+      # the autobuild step can install dependencies automatically.
       - name: Autobuild
-        run: |
-          npm install
-          npm run build
+        uses: github/codeql-action/autobuild@v2
+
+      # If the autobuild step fails to build your project, replace it with a manual build:
+      # - name: Install dependencies
+      #   run: npm install
+      #
+      # - name: Build project
+      #   run: npm run build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
