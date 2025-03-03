@@ -1,0 +1,27 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "description": "What was **NOT** working - OpenAI - VertexAI  - HuggingFace  - `all-roberta`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repnalyzer/core.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/repnalyzer/core/issues"
+  },
+  "homepage": "https://github.com/repnalyzer/core#readme",
+  "dependencies": {
+    "@types/node": "^22.13.8",
+    "node": "^23.9.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
